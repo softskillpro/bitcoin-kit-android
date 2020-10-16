@@ -42,7 +42,7 @@ class BitcoinxKit : AbstractKit {
             words: List<String>,
             walletId: String,
             networkType: NetworkType = NetworkType.MainNet,
-            peerSize: Int = 10,
+            peerSize: Int = 2,
             syncMode: SyncMode = SyncMode.Full(),
             confirmationsThreshold: Int = 6,
             bip: Bip = Bip.BIP44
@@ -53,7 +53,7 @@ class BitcoinxKit : AbstractKit {
             seed: ByteArray,
             walletId: String,
             networkType: NetworkType = NetworkType.MainNet,
-            peerSize: Int = 10,
+            peerSize: Int = 2,
             syncMode: SyncMode = SyncMode.Full(),
             confirmationsThreshold: Int = 6,
             bip: Bip = Bip.BIP44
