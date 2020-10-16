@@ -32,4 +32,5 @@ dependencies {
     implementation project(':bitcoincashkit')
     implementation project(':litecoinkit')
     implementation project(':bitcoinxkit')
+    implementation project(':xcoinkit')
 }
