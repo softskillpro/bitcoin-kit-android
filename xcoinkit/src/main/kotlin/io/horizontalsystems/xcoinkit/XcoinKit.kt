@@ -74,7 +74,7 @@ class XcoinKit : AbstractKit, IInstantTransactionDelegate, BitcoinCore.Listener 
             walletId: String,
             networkType: NetworkType = NetworkType.MainNet,
             peerSize: Int = 2,
-            syncMode: SyncMode = SyncMode.Full(),
+            syncMode: SyncMode = SyncMode.Api(),
             confirmationsThreshold: Int = 6
     ) : this(context, Mnemonic().toSeed(words), walletId, networkType, peerSize, syncMode, confirmationsThreshold)
 
@@ -84,7 +84,7 @@ class XcoinKit : AbstractKit, IInstantTransactionDelegate, BitcoinCore.Listener 
             walletId: String,
             networkType: NetworkType = NetworkType.MainNet,
             peerSize: Int = 2,
-            syncMode: SyncMode = SyncMode.Full(),
+            syncMode: SyncMode = SyncMode.Api(),
             confirmationsThreshold: Int = 6
     ) {
         val coreDatabase = CoreDatabase.getInstance(context, getDatabaseNameCore(networkType, walletId, syncMode))
@@ -96,11 +96,11 @@ class XcoinKit : AbstractKit, IInstantTransactionDelegate, BitcoinCore.Listener 
 
         network = when (networkType) {
             NetworkType.MainNet -> {
-                initialSyncUrl = ""
+                initialSyncUrl = "http://explorer.xcoin.zone/insight-api/"
                 MainNetXcoin()
             }
             NetworkType.TestNet -> {
-                initialSyncUrl = ""
+                initialSyncUrl = "http://explorer.xcoin.zone/insight-api/"
                 TestNetXcoin()
             }
         }
