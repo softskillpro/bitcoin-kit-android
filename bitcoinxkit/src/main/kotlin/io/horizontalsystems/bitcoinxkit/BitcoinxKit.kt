@@ -43,7 +43,7 @@ class BitcoinxKit : AbstractKit {
             walletId: String,
             networkType: NetworkType = NetworkType.MainNet,
             peerSize: Int = 2,
-            syncMode: SyncMode = SyncMode.Full(),
+            syncMode: SyncMode = SyncMode.Api(),
             confirmationsThreshold: Int = 6,
             bip: Bip = Bip.BIP44
     ) : this(context, Mnemonic().toSeed(words), walletId, networkType, peerSize, syncMode, confirmationsThreshold, bip)
@@ -54,7 +54,7 @@ class BitcoinxKit : AbstractKit {
             walletId: String,
             networkType: NetworkType = NetworkType.MainNet,
             peerSize: Int = 2,
-            syncMode: SyncMode = SyncMode.Full(),
+            syncMode: SyncMode = SyncMode.Api(),
             confirmationsThreshold: Int = 6,
             bip: Bip = Bip.BIP44
     ) {
@@ -64,11 +64,11 @@ class BitcoinxKit : AbstractKit {
 
         network = when (networkType) {
             NetworkType.MainNet -> {
-                initialSyncApi = InsightApi("")
+                initialSyncApi = InsightApi("http://explorer.bitcoin-x.io/insight-api/")
                 MainNetBitcoinx()
             }
             NetworkType.TestNet -> {
-                initialSyncApi = BCoinApi("")
+                initialSyncApi = BCoinApi("http://explorer.bitcoin-x.io/insight-api/")
                 TestNetBitcoinx()
             }
         }
