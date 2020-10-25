@@ -4,6 +4,7 @@ import io.horizontalsystems.bitcoincore.network.Network
 
 class TestNetBitcoinx : Network() {
 
+    override val protocolVersion = 70015
     override var port: Int = 29296
 
     override var magic: Long = 0x2255073f
