@@ -73,8 +73,8 @@ class XcoinKit : AbstractKit, IInstantTransactionDelegate, BitcoinCore.Listener 
             words: List<String>,
             walletId: String,
             networkType: NetworkType = NetworkType.MainNet,
-            peerSize: Int = 2,
-            syncMode: SyncMode = SyncMode.Api(),
+            peerSize: Int = 10,
+            syncMode: SyncMode = SyncMode.Full(),
             confirmationsThreshold: Int = 6
     ) : this(context, Mnemonic().toSeed(words), walletId, networkType, peerSize, syncMode, confirmationsThreshold)
 
@@ -83,8 +83,8 @@ class XcoinKit : AbstractKit, IInstantTransactionDelegate, BitcoinCore.Listener 
             seed: ByteArray,
             walletId: String,
             networkType: NetworkType = NetworkType.MainNet,
-            peerSize: Int = 2,
-            syncMode: SyncMode = SyncMode.Api(),
+            peerSize: Int = 10,
+            syncMode: SyncMode = SyncMode.Full(),
             confirmationsThreshold: Int = 6
     ) {
         val coreDatabase = CoreDatabase.getInstance(context, getDatabaseNameCore(networkType, walletId, syncMode))
