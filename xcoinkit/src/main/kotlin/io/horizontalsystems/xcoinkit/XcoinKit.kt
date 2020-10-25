@@ -117,14 +117,6 @@ class XcoinKit : AbstractKit, IInstantTransactionDelegate, BitcoinCore.Listener 
         blockValidatorSet.addBlockValidator(ProofOfWorkValidator())
 
         val blockValidatorChain = BlockValidatorChain()
-
-        if (network is MainNetXcoin) {
-            blockValidatorChain.add(DarkGravityWaveValidator(blockHelper, heightInterval, targetTimespan, maxTargetBits, 68589))
-        } else {
-            blockValidatorChain.add(DarkGravityWaveTestnetValidator(targetSpacing, targetTimespan, maxTargetBits, 4002))
-            blockValidatorChain.add(DarkGravityWaveValidator(blockHelper, heightInterval, targetTimespan, maxTargetBits, 4002))
-        }
-
         blockValidatorSet.addBlockValidator(blockValidatorChain)
 
         bitcoinCore = BitcoinCoreBuilder()
@@ -245,8 +237,8 @@ class XcoinKit : AbstractKit, IInstantTransactionDelegate, BitcoinCore.Listener 
     companion object {
         const val maxTargetBits: Long = 0x1e0fffff
 
-        const val targetSpacing = 150             // 2.5 min. for mining 1 Block
-        const val targetTimespan = 3600L          // 1 hour for 24 blocks
+        const val targetSpacing = 60             // 1 min. for mining 1 Block
+        const val targetTimespan = 120L          //
         const val heightInterval = targetTimespan / targetSpacing
 
         private fun getDatabaseNameCore(networkType: NetworkType, walletId: String, syncMode: SyncMode) =
