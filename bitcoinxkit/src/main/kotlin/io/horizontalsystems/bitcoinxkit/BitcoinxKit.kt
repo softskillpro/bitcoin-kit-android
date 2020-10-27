@@ -80,16 +80,6 @@ class BitcoinxKit : AbstractKit {
         blockValidatorSet.addBlockValidator(ProofOfWorkValidator())
 
         val blockValidatorChain = BlockValidatorChain()
-
-        if (networkType == NetworkType.MainNet) {
-            blockValidatorChain.add(LegacyDifficultyAdjustmentValidator(blockHelper, heightInterval, targetTimespan, maxTargetBits))
-            blockValidatorChain.add(BitsValidator())
-        } else if (networkType == NetworkType.TestNet) {
-            blockValidatorChain.add(LegacyDifficultyAdjustmentValidator(blockHelper, heightInterval, targetTimespan, maxTargetBits))
-            blockValidatorChain.add(LegacyTestNetDifficultyValidator(storage, heightInterval, targetSpacing, maxTargetBits))
-            blockValidatorChain.add(BitsValidator())
-        }
-
         blockValidatorSet.addBlockValidator(blockValidatorChain)
 
         val coreBuilder = BitcoinCoreBuilder()
